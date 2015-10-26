@@ -1,34 +1,40 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
+var Promise=require("bluebird");
+
 var xiciProxySite = "http://www.xicidaili.com/nt/1";// "http://www.xicidaili.com/nt/1";
 
 var scanner = function () {
 
 };
 
-scanner.prototype.startScan = function (callback) {
-	this.scanUrl(xiciProxySite, callback);
+scanner.prototype.startScan = function () {
+	return this.scanUrl(xiciProxySite);
 }
 
-scanner.prototype.scanUrl = function (url, callback) {
+scanner.prototype.scanUrl = function (url) {
 	var that = this;
-	request(
-		{
+	var p=Promise.promisify(request);
+	
+	return p({
 			url: url,
 			method: "GET",
 			headers: { //浏览器伪装
 				'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'  //this is make the scanner to be a webbrowers
 			}
-		}
-		, function (err, res, body) {
-			if (!err && res.statusCode == 200) {
-				//console.log(body);
-				var iplist=that.parseHtml(body);
-				callback(iplist);
-			}
-		}
-		)
+		});
+// 		.then(function(result){
+// 			//if (!err && res.statusCode == 200) {
+// 				//console.log(body);
+// 				var iplist=that.parseHtml(result);
+// 				callback(iplist);
+// 			// }
+// 		}).catch(function (error) {
+// 			console.log(error);
+//     // Handle any error from all above steps
+// });
+
 };
 
 scanner.prototype.parseHtml = function (html) {
@@ -49,7 +55,7 @@ scanner.prototype.parseHtml = function (html) {
 
 	});
 	
-	console.log(ipList);
+	//console.log(ipList);
 	return ipList;
 }
 
