@@ -13,13 +13,24 @@ scanner.startScan().then(function (result) {
 
 			var proxyHandler= tester.testProxy(ipList[i]);
 			allTestPromises.push(proxyHandler);
-			if (i >= 10) {
+			if (i >= 80) {
 				break;
 			}
 		}
-		Q.allSettled(allTestPromises).then(function(result, data){
-			console.log(result);
-		});
+		// Q.allSettled(allTestPromises).then(function(result, data){
+		// 	//end test
+		// 	result.forEach(function(element) {
+		// 		//console.log(element);
+		// 		if(element.state!="rejected"){
+		// 			// console.log(element);
+		// 			console.log(element.value[0]);
+		// 		}
+		// 	}, this)
+		// 	.catch(function(err){
+		// 		console.error(err);
+		// 	});
+		// 	//console.log(result);
+		// });
 		
 	}
 
