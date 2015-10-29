@@ -1,6 +1,6 @@
 var request = require("request");
 var Q = require("q");
-var desUrl ="https://www.google.com.hk/#safe=strict&q=test";//"http://google.com.hk";"http://www.baidu.com"//
+var desUrl ="http://www.baidu.com";//"http://google.com.hk" //"https://www.google.com.hk/#safe=strict&q=test";//"http://google.com.hk";"http://www.baidu.com"//
 
 
 var testProxy = function (proxy) {
@@ -18,7 +18,7 @@ var testProxy = function (proxy) {
 			'User-Agent': 'request'
 		}
 	},function(err, result, body){
-		if(err) return;// console.error(err);
+		if(err) return; //  console.error(err);
 		if (result.statusCode == 200 || result.statusCode == 502) {  //I add 502 here because sometime it work
 				proxy.isValid = true;
 				proxy.speedTime = result.elapsedTime;
@@ -55,5 +55,9 @@ return;
 	// 	console.error(err);
 	// });
 }
+
+// var ipItem=process.argv[2];
+// console.log(process.argv);
+// process.send({result:"ok"});
 
 exports.testProxy = testProxy;

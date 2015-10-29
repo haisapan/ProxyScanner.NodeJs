@@ -3,7 +3,7 @@ var cheerio = require("cheerio");
 
 var Promise=require("bluebird");
 
-var xiciProxySite = "http://www.xicidaili.com/nt/1";// "http://www.xicidaili.com/nt/1";
+var xiciProxySite =  "http://www.xicidaili.com/nt/1";
 
 var scanner = function () {
 

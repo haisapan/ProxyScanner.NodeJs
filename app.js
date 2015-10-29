@@ -1,4 +1,7 @@
 
+var cp=require("child_process");
+var tester=require("./proxyTester/proxyTester.js");
+
 var Q = require("q");
 var Scanner = require("./proxyScanner/xiciScanner.js");
 
@@ -11,41 +14,21 @@ scanner.startScan().then(function (result) {
        var allTestPromises=[];
 		for (var i = 0; i < ipList.length; i++) {
 
+			// var child=cp.fork("./proxyTester/proxyTester.js",[ipList[i]]); //,[ipList[i]]
+			// child.on("message", function(m){
+			// 	console.log(m);
+			// })
+			// child.send(ipList[i]);
+
 			var proxyHandler= tester.testProxy(ipList[i]);
-			allTestPromises.push(proxyHandler);
-			if (i >= 80) {
+			// allTestPromises.push(proxyHandler);
+			if (i >= 90) {
 				break;
 			}
 		}
-		// Q.allSettled(allTestPromises).then(function(result, data){
-		// 	//end test
-		// 	result.forEach(function(element) {
-		// 		//console.log(element);
-		// 		if(element.state!="rejected"){
-		// 			// console.log(element);
-		// 			console.log(element.value[0]);
-		// 		}
-		// 	}, this)
-		// 	.catch(function(err){
-		// 		console.error(err);
-		// 	});
-		// 	//console.log(result);
-		// });
+		
 		
 	}
 
 });
 
-var tester = require("./proxyTester/proxyTester.js");
-
-// function test(ipList) {
-// 	console.log("....start to test ips");
-// 	for (var i = 0; i < ipList.length; i++) {
-
-// 		tester.testProxy(ipList[i]);
-// 		if (i >= 20) {
-// 			break;
-// 		}
-
-// 	}
-// }
