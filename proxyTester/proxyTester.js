@@ -5,7 +5,7 @@ var desUrl ="http://www.baidu.com";//"http://google.com.hk" //"https://www.googl
 
 var testProxy = function (proxy) {
 	var proxyRequest = request.defaults({
-		proxy:  "http://" + proxy.Ip + ":" + proxy.Port, //"http://113.126.171.238:80", //
+		proxy:    "http://" + proxy.Ip + ":" + proxy.Port, //"http:// 60.29.248.142:8080",
 		 maxSockets:Infinity,
 		 pool: {maxSockets: Infinity},
 		timeout: 120000,
@@ -56,8 +56,18 @@ return;
 	// });
 }
 
+// console.log("start child");
 // var ipItem=process.argv[2];
-// console.log(process.argv);
-// process.send({result:"ok"});
+// //console.log(process.argv);
+// process.on("message", function(data){
+// 	//console.log(data);
+// 	//console.log("start child message");
+// 	testProxy(data);
+// 	//console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+// 				//return [proxy];
+// 				var proxy=data;
+// 	process.send({result:"Proxy start test:  %s:%s in %s, rate is:%s"+proxy.Ip+proxy.Port+proxy.Place});
+// })
+
 
 exports.testProxy = testProxy;
