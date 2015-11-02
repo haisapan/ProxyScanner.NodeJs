@@ -1,56 +1,68 @@
 var request = require("request");
-var Q = require("q");
+var Promise = require("bluebird");
 
 var testProxy = function (proxy, desUrl) {
 	var proxyRequest = request.defaults({
 		proxy: "http://" + proxy.Ip + ":" + proxy.Port, //"http:// 60.29.248.142:8080",
 		maxSockets: Infinity,
 		pool: { maxSockets: Infinity },
-		timeout: 120000,
+		timeout: 20000,
 		time: true
 	});
 
-	proxyRequest({
+	// proxyRequest({
+	// 	url: desUrl + "?r=" + Math.random(),
+	// 	headers: {
+	// 		'User-Agent': 'request'
+	// 	}
+	// }, function (err, result, body) {
+	// 	if (err) return; //  console.error(err);
+	// 	if (result.statusCode == 200 || result.statusCode == 502) {  //I add 502 here because sometime it work
+	// 		proxy.isValid = true;
+	// 		proxy.speedTime = result.elapsedTime;
+	// 		console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+	// 	}
+	// 	//return [proxy];
+	// })
+
+	// return;
+	var pRequest = Promise.promisify(proxyRequest);   // {multiArgs: true, context:"hello haisa"}
+	//pRequest.test="aaaa";
+	//console.log(new Date());
+	return pRequest({
 		url: desUrl + "?r=" + Math.random(),
 		headers: {
 			'User-Agent': 'request'
 		}
-	}, function (err, result, body) {
-		if (err) return; //  console.error(err);
-		if (result.statusCode == 200 || result.statusCode == 502) {  //I add 502 here because sometime it work
-			proxy.isValid = true;
-			proxy.speedTime = result.elapsedTime;
-			console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
-		}
-		//return [proxy];
-	})
+		// proxy:proxy
+	});
+		// .then(function (result) {
+		// 	if (result[0].statusCode == 200 || result[0].statusCode == 502) {  //I add 502 here because sometime it work
+		// 		proxy.isValid = true;
+		// 		proxy.speedTime = result[0].elapsedTime;
+		// 		console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+		// 		return proxy;
+		// 	}
+		// 	return null;
 
-	return;
-	var q = Q.denodeify(proxyRequest);
-	console.log(new Date());
-	q({
-		url: desUrl + "?r=" + Math.random(),
-		headers: {
-			'User-Agent': 'request'
-		}
-	})
-		.then(function (result) {
-			if (result[0].statusCode == 200 || result[0].statusCode == 502) {  //I add 502 here because sometime it work
-				proxy.isValid = true;
-				proxy.speedTime = result[0].elapsedTime;
-				console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
-				//return [proxy];
-			}
-			//return null;
-
-		}).catch(function (err) {
-			//console.error(err);
-		})
-	// .spread(function(validProxy){
-	// 	//console.log(validProxy);
+		// })
+		// .catch(function (err) {
+		// 	console.error(err);
+		// })
+		
+	// .spread(function(result){
+	// 	// console.log(validProxy);
+	// 	if (result.statusCode == 200 || result.statusCode == 502) {  //I add 502 here because sometime it work
+	// 			proxy.isValid = true;
+	// 			proxy.speedTime = result.elapsedTime;
+	// 			console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+	// 			return [proxy];
+	// 		}
+	// 		return [];
 	// })
 	// .catch(function (err) {
-	// 	console.error(err);
+
+	// 	//console.error(err);
 	// });
 }
 
