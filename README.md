@@ -3,8 +3,9 @@ This is a proxy IP:Port scanner, for some one can't visit some internet site, li
 
 #For Now:
 1. You can download the source, or clone it to folder like: D:/ProxyScanner.NodeJs;
-2. open the path in Windows CMD, excute: **npm install**;
+2. open the path in Windows CMD, excute: **npm install** (have to install nodejs firstly);
 3. Excute the command: **node app.js**;
+
 All are done! You will find the valid proxy to visit google.com.hk or google.com.
 
 If you want a proxy to visit some special url, for example: http://www.facebook.com, 
