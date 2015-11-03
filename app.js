@@ -3,7 +3,7 @@ var Promise = require("bluebird");
 var Scanner = require("./proxyScanner/xiciScanner.js");
 var tester = require("./proxyTester/proxyTester.js");
 
-var desUrl = process.argv[2] || "http://www.google.com.hk";  ////var desUrl ="https://github.com/";
+var desUrl = process.argv[2] || "https://www.google.com.hk";  ////var desUrl ="https://github.com/";
 
 console.log("----start to connect the url: " + desUrl);
 
