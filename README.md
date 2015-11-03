@@ -8,8 +8,8 @@ This is a proxy IP:Port scanner, for some one can't visit some internet site, li
 
 All are done! You will find the valid proxy to visit google.com.hk or google.com.
 
-If you want a proxy to visit some special url, for example: http://www.facebook.com, 
-you can add one more argument, like this: **node app.js http://www.facebook.com**.
+If you want a proxy to visit some special url, for example: https://www.facebook.com, 
+you can add one more argument, like this: **node app.js https://www.facebook.com**.
 
 Here is a link to see how to set proxy(in Windows):
 http://jingyan.baidu.com/article/95c9d20d961d4aec4e7561f5.html
