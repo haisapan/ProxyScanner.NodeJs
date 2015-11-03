@@ -20,20 +20,10 @@ scanner.prototype.scanUrl = function (url) {
 	return p({
 			url: url,
 			method: "GET",
-			headers: { //浏览器伪装
+			headers: { //make the scanner to be bowerser
 				'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'  //this is make the scanner to be a webbrowers
 			}
 		});
-// 		.then(function(result){
-// 			//if (!err && res.statusCode == 200) {
-// 				//console.log(body);
-// 				var iplist=that.parseHtml(result);
-// 				callback(iplist);
-// 			// }
-// 		}).catch(function (error) {
-// 			console.log(error);
-//     // Handle any error from all above steps
-// });
 
 };
 
@@ -54,8 +44,7 @@ scanner.prototype.parseHtml = function (html) {
 		}
 
 	});
-	
-	//console.log(ipList);
+
 	return ipList;
 }
 

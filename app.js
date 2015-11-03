@@ -22,10 +22,8 @@ scanner.startScan().then(function (result) {
 			var proxyHandler = tester.testProxy(ipList[i], desUrl);
 			allTestPromises.push(proxyHandler);
 			(function(proxy) {
-				// var proxy = ipList[i];
 				proxyHandler.then(function (result) {
-					// console.log(result);
-					if (result[0].statusCode == 200 || result[0].statusCode == 502) {
+					if (result[0].statusCode == 200) { // || result[0].statusCode == 502
 						proxy.isValid = true;
 						proxy.speedTime = result[0].elapsedTime;
 						console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
@@ -47,19 +45,8 @@ scanner.startScan().then(function (result) {
 
 		Promise.settle(allTestPromises).then(function (results) {
 			console.log("have find all the valid proxy!");
-			console.log(validIpList);
-			// results.forEach(function (result) {
-			// 	if (result.isFulfilled()) {
-			// 		var value = result.value();
-			// 		if (value[0].statusCode == 200) {
-			// 			console.log(value[0].body);
-			// 		}
-
-			// 	} else {
-			// 		var reason = result.reason();
-			// 		console.error(reason);
-			// 	}
-			// });
+			// console.log(validIpList);
+			
 		}).catch(function (err) {
 			console.log(err)
 		});
