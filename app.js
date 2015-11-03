@@ -37,9 +37,9 @@ scanner.startScan().then(function (result) {
 			}) (ipList[i]);
 
 
-			if (i >= 80) {
-				break;
-			}
+			// if (i >= 80) {
+			// 	break;
+			// }
 		}
 
 
