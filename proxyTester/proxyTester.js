@@ -11,14 +11,14 @@ var testProxy = function (proxy, desUrl) {
 		time: true
 	});
 
-	var pRequest = Promise.promisify(proxyRequest); 
+	var pRequest = Promise.promisify(proxyRequest);
 	return pRequest({
 		url: desUrl + "?r=" + Math.random(),
 		headers: {
 			'User-Agent': 'request'
 		}
 	});
-	
+
 }
 
 exports.testProxy = testProxy;
