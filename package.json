@@ -12,11 +12,22 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
+  // "scripts": {
+  //   "test": "echo \"Error: no test specified\" && exit 1"
+  // },
   "keywords": [
     "proxyscan"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/haisapan/ProxyScanner.NodeJs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haisapan/ProxyScanner.NodeJs/issues"
+  },
+  "homepage": "https://github.com/haisapan/ProxyScanner.NodeJs",
   "author": "haisapan@hotmail.com",
-  "license": "ISC"
+  "license": "MIT"
 }
