@@ -13,7 +13,8 @@
     "start": "node app.js"
   },
   "bin": {
-    "proxyscan": "./bin/app.js"
+    "proxy": "./bin/proxy",
+    "proxyscan": "./bin/proxy"
   },
   "keywords": [
     "proxyscan",

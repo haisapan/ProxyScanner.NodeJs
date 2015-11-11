@@ -6,18 +6,24 @@ var tester = require("./proxyTester/proxyTester.js");
 var desUrl = process.argv[2] || "https://www.google.com.hk";  ////var desUrl ="https://github.com/";
 var scanPageNumers = process.argv[3] || 9;  //scan xici numbers
 
-console.log("----start to connect the url: " + desUrl);
+startScan();  //main start
 
-var scanner = new Scanner();
-scanner.startMultiScan(scanPageNumers).then(function (results) {  //Start to scan 9 pages to get more proxy
-	var allIPs = [];
-	for (var i = 0; i < results.length; i++) {
-		var result = results[i];
-		allIPs = allIPs.concat(result);
-	}
+function startScan() {
+	console.log("----start to connect the url: " + desUrl);
 
-	testMultiIps(allIPs);
-});
+	var scanner = new Scanner();
+	scanner.startMultiScan(scanPageNumers).then(function (results) {  //Start to scan 9 pages to get more proxy
+		var allIPs = [];
+		for (var i = 0; i < results.length; i++) {
+			var result = results[i];
+			allIPs = allIPs.concat(result);
+		}
+
+		testMultiIps(allIPs);
+	});
+}
+
+
 
 function testMultiIps(ipList) {
 	var allTestPromises = [];
@@ -51,11 +57,13 @@ function testMultiIps(ipList) {
 
 
 	Promise.settle(allTestPromises).then(function (results) {
-		console.log("have find all the valid proxy!");
+		console.log("----have find all the valid proxy!");
 		// console.log(validIpList);
+		process.exit();
 			
 	}).catch(function (err) {
 		console.log(err)
+		process.exit();
 	});
 }
 
