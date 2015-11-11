@@ -1,6 +1,6 @@
 {
   "name": "proxyscan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "this is a proxy scan robot, to avoid some firewall to internet",
   "main": "app.js",
   "dependencies": {
