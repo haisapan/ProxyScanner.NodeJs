@@ -12,8 +12,15 @@
   "scripts": {
     "start": "node app.js"
   },
+  "bin": {
+    "proxyscan": "./bin/app.js"
+  },
   "keywords": [
-    "proxyscan","proxy","greatfirewall","gfw"
+    "proxyscan",
+    "proxy",
+    "greatfirewall",
+    "gfw",
+    "proxy.scan"
   ],
   "repository": {
     "type": "git",
