@@ -6,7 +6,9 @@ This is a proxy IP:Port scanner, for some one can't visit some internet site, li
 1. in cmd: 
 <code>**npm install -g proxyscan**</code>
 2. Excute the command: 
-<code>**proxy** or **proxyscan**</code>
+<code>**proxy**</code>
+or
+<coe> **proxyscan**</code>
 
 All are done! You will find the valid proxys to visit google.com.hk or google.com.
 
