@@ -1,7 +1,7 @@
 var Promise = require("bluebird");
 
-var Scanner = require("./proxyScanner/xiciScanner.js");
-var tester = require("./proxyTester/proxyTester.js");
+var Scanner = require("./lib/proxyScanner/xiciScanner.js");
+var tester = require("./lib/proxyTester/proxyTester.js");
 
 var desUrl = process.argv[2] || "https://www.google.com.hk";  ////var desUrl ="https://github.com/";
 var scanPageNumers = process.argv[3] || 9;  //scan xici numbers
