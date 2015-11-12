@@ -3,8 +3,10 @@ This is a proxy IP:Port scanner, for some one can't visit some internet site, li
 
 #Installation and Usage
 
-1. in cmd: **npm install -g proxyscan**
-2. Excute the command: **proxy** or **proxyscan**;
+1. in cmd: 
+<code>**npm install -g proxyscan**</code>
+2. Excute the command: 
+<code>**proxy** or **proxyscan**</code>
 
 All are done! You will find the valid proxys to visit google.com.hk or google.com.
 
@@ -12,10 +14,7 @@ All are done! You will find the valid proxys to visit google.com.hk or google.co
 
 If you want a proxy to visit some special url, for example: https://www.facebook.com, 
 you can add one more argument, like this:
-<code>
-
- **proxy https://www.facebook.com**.
- </code>
+<code> **proxy https://www.facebook.com**</code>
 
 #How to setup proxy
 Here is a link to see how to set proxy(in Windows):
