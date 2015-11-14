@@ -1,6 +1,8 @@
 # ProxyScanner.NodeJs
 This is a proxy IP:Port scanner, for some one can't visit some internet site, like google.com
 
+[![npm version](https://badge.fury.io/js/proxyscan.svg)](https://badge.fury.io/js/proxyscan)
+
 #Installation and Usage
 
 1. in cmd: 
