@@ -3,6 +3,7 @@ This is a proxy IP:Port scanner, for some one can't visit some internet site, li
 
 [![npm version](https://badge.fury.io/js/proxyscan.svg)](https://badge.fury.io/js/proxyscan)
 
+[![NPM](https://nodei.co/npm/proxyscan.png)](https://nodei.co/npm/proxyscan/)
 #Installation and Usage
 
 1. in cmd: 
