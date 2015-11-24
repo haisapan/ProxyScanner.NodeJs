@@ -39,7 +39,9 @@ function testMultiIps(ipList) {
 				if (result[0].statusCode == 200) { // || result[0].statusCode == 502
 					proxy.isValid = true;
 					proxy.speedTime = result[0].elapsedTime;
-					console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+					//  console.log("Proxy Valid:  %s:%s in %s, rate is:%s", proxy.Ip, proxy.Port, proxy.Place, proxy.speedTime);
+					  console.log("Proxy: %s", JSON.stringify(proxy));
+					// process.stdout.write(proxy);
 					validIpList.push(proxy);
 
 				}

@@ -4,24 +4,71 @@
 process.bin = process.title = 'proxy';
 var util = require('util');
 var exec = require('child_process').exec;
+var proxySetter = require("../lib/setProxy.js");
+
 console.log(__dirname);
 //console.log(process);
-var cwd = process.argv[1]||"";
+var cwd = process.argv[1] || "";
 var app = __dirname + "/../app.js";   //start file
-var commond="node "+app+" "+(process.argv[2]||"")+" "+(process.argv[3]||"");  //join the needed commond argv, not list all
+
+
+var command = process.argv[2];
+switch (command) {
+  case "-u":  //special the url;
+
+    break;
+  case "-enable":  //enable the proxy
+  case "-e":
+  
+    break;
+
+  case "-disable":  //disable the proxy
+  case "-d":
+  
+    break;
+
+  case "-help":
+  case "-h":
+
+  default:
+    break;
+}
+
+
+var scanCommand = "node " + app + " " + (process.argv[2] || "") + " " + (process.argv[3] || "");  //join the needed commond argv, not list all
 
 console.log("----prepare the scanner:");
 
-var child = exec(commond , function (err, stdout, stderr) {
+var child = exec(scanCommand, function (err, stdout, stderr) {
   if (err) throw err;
 });
+var validIpList = [];
 child.stdout.on('data', function (data) {
-  if(data.indexOf("\n")>0){
-    data=data.substring(0,data.toString().indexOf("\n"))  //remove unused new line
+  if (data.indexOf("\n") >= 0) {
+    data = data.substring(0, data.toString().indexOf("\n"))  //remove unused new line
+    if (data.indexOf("Proxy: ") >= 0) {
+      var proxyStr = data.substr(7);
+      var proxy = JSON.parse(proxyStr);
+      validIpList.push(proxy);
+    }
+
   }
   console.log(data);
 });
 child.on("exit", function (code, signal) {
-  // console.log("exit child");
+  console.log("exit child");
+  setProxy();
 });
 
+
+function setProxy() {
+  console.log(validIpList);
+  console.log(process.platform);
+  if (validIpList.length > 0) {
+    if (process.platform == "win32") {
+      proxySetter.changeProxyAndEnableInWin(validIpList[0]);
+      console.log("set proxy successfully");
+    }
+  }
+
+}
